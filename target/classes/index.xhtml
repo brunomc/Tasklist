@@ -47,10 +47,10 @@
 			     <p:column headerText="Status">
 			        <h:outputText value="#{task.status}" />
 			    </p:column>
-			     <p:column headerText="Status">
+			     <p:column headerText="Prazo para Conclusão">
 			        <h:outputText value="#{task.prazoConclusao}" />
 			    </p:column>
-			    <p:column headerText="Deletar">
+			       <p:column headerText="Deletar">
 			        <h:commandButton value="Deletar" action="#{taskBean.deletar(task)}"/>
 			        <h:commandButton value="Mudar Status" action="#{taskBean.alteraStatus(task)}"/>
 			    </p:column>
