@@ -20,7 +20,7 @@ public class Task implements Serializable {
 	private String status;
 	private Date prazoConclusao;
 
-	
+	@Temporal(TemporalType.DATE)
 	public Date getPrazoConclusao() {
 		return prazoConclusao;
 	}

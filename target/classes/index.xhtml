@@ -19,6 +19,9 @@
 				
 				<p:outputLabel for="description" value="Descrição" />
 				<p:inputTextarea id="description" value="#{taskBean.task.descricao}"></p:inputTextarea>
+		
+		<p:outputLabel for="button" value="Prazo de Conclusão" />
+        <p:calendar id="button" value="#{taskBean.task.prazoConclusao}" showOn="button" />
 				
 		<p:outputLabel for="selectOneMenu" value="Status" />
   		  <p:selectOneMenu id="selectOneMenu" value="#{taskBean.task.status}">
@@ -43,6 +46,9 @@
 			    </p:column>
 			     <p:column headerText="Status">
 			        <h:outputText value="#{task.status}" />
+			    </p:column>
+			     <p:column headerText="Status">
+			        <h:outputText value="#{task.prazoConclusao}" />
 			    </p:column>
 			    <p:column headerText="Deletar">
 			        <h:commandButton value="Deletar" action="#{taskBean.deletar(task)}"/>
