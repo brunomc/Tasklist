@@ -58,7 +58,26 @@ public class TaskDAO implements ITaskDAO<Task> {
 		}
 		
 	}
-	
+	@Override
+	public void alteraStatus(Task task) {
+		try {
+				Session session =HibernateUtil.getFactory().openSession();
+			
+			session.beginTransaction();
+		
+			System.out.println(task.getNome());
+			
+			
+			session.update(task);
+			session.getTransaction().commit();
+			session.close();
+			
+			
+		} catch (Exception e) {
+			System.out.println("Não foi possivel deletar");
+		}
+		
+	}
 
 	@Override
 	@SuppressWarnings("unchecked")

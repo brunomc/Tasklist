@@ -50,6 +50,19 @@ public class TaskBean {
 		td.deletar(tsk);
 		
 	}
+public void alteraStatus(Task  tsk) {
+		limpar();
+		TaskDAO td = new TaskDAO();
+		if(tsk.getStatus().equals("Finalizado")) {
+			tsk.setStatus("Em aberto");
+		}else if(!tsk.getStatus().equals("Finalizado")) {
+			tsk.setStatus("Finalizado");
+		}
+		
+		System.out.println(tsk.getStatus());
+		td.alteraStatus(tsk);
+		
+	}
 public List<Task> buscar() throws Exception {
 		TaskDAO td = new TaskDAO();
 		tasklist = td.buscar();
