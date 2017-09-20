@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title>JSF 2.0 Hello World</title>
+        <title>Tasklist</title>
     </h:head>
     <h:body>
-    	<h2>JSF 2.0 Hello World Example - hello.xhtml</h2>
-    	<h:outputText value="Funcionou o JSF" />
-    </h:body>
+	<h1>Controle de tarefas</h1>
+	<h:form>
+		<p:panel header="Controle de Tarefas">
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="name" value="Nome" />
+				<p:inputText id="name" value="#{taskBean.task.nome}"></p:inputText>
+				
+				<p:outputLabel for="description" value="Descrição" />
+				<p:inputTextarea id="description" value="#{taskBean.task.descricao}"></p:inputTextarea>
+				
+		<p:outputLabel for="selectOneMenu" value="Status" />
+  		  <p:selectOneMenu id="selectOneMenu" value="#{taskBean.task.status}">
+		        <f:selectItem itemLabel="Em Aberto" itemValue="Em Aberto" />
+		        <f:selectItem itemLabel="Finalizada" itemValue="Finalizado" />
+		       
+    	   </p:selectOneMenu>
+            	
+				
+			<h:commandButton  id="cadastrar" value="Cadastrar" action="#{taskBean.salvar()}" />	
+			</h:panelGrid >
+		</p:panel>
+		
+		<p:panel header="Lista de Tarefas">
+						<p:dataTable var="task" value="#{taskBean.buscar()}">
+			    		 
+			    <p:column headerText="Nome">
+			        <h:outputText value="#{task.nome}" />
+			    </p:column>
+			    <p:column headerText="Descrição">
+			        <h:outputText value="#{task.descricao}" />
+			    </p:column>
+			     <p:column headerText="Status">
+			        <h:outputText value="#{task.status}" />
+			    </p:column>
+			    <p:column headerText="Deletar">
+			        <h:commandButton value="Deletar" action="#{taskBean.deletar(task)}"/>
+			    </p:column>
+			 
+			   
+			</p:dataTable>
+		</p:panel>		   
+	</h:form>
+	
+</h:body>
 </html>

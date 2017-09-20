@@ -1,5 +1,7 @@
 package br.com.bc.main;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 
 import br.com.bc.model.Task;
@@ -17,6 +19,8 @@ Session session =HibernateUtil.getFactory().openSession();
 		
 		tk.setNome("Tarefa1");
 		tk.setDescricao("descricao da tarefa");
+		tk.setPrazoConclusao(new Date());
+		tk.setStatus(true);
 		
 		
 		System.out.println(tk.getNome());

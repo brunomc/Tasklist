@@ -1,18 +1,35 @@
 package br.com.bc.model;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.*;
 
 
 @Entity
 @Table(name="tarefas")
-public class Task {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+public class Task implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String nome;
 	private String descricao;
-	private Boolean status;
+	private String status;
+	private Date prazoConclusao;
 
+	@Temporal(TemporalType.DATE)
+	public Date getPrazoConclusao() {
+		return prazoConclusao;
+	}
+
+	public void setPrazoConclusao(Date prazoConclusao) {
+		this.prazoConclusao = prazoConclusao;
+	}
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getId() {
 		return id;
 	}
@@ -37,11 +54,11 @@ public class Task {
 		this.descricao = descricao;
 	}
 
-	public Boolean getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
